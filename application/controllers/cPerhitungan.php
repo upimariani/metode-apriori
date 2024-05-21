@@ -36,7 +36,7 @@ class cPerhitungan extends CI_Controller
 
 			// echo $produk[$i][0] . '|' . $produk[$i][1] . '<br>';
 			$data = array(
-				'id_transaksi' => $produk[$i][1],
+				'id_order' => $produk[$i][1],
 				'produk' => $produk[$i][0]
 			);
 			$this->db->insert('dt_tabular', $data);
