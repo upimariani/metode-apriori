@@ -19,7 +19,7 @@ class cPerhitungan extends CI_Controller
 		//--------------------------------PROSES AWAL
 		$dt_produk = $this->mPerhitungan->dt_produk();
 		foreach ($dt_produk as $key => $value) {
-			$dta_produk[] = $value->nm_produk;
+			$dta_produk[] = $value->nama_produk;
 		}
 
 		//mengambil data transaksi -> produk
@@ -28,7 +28,7 @@ class cPerhitungan extends CI_Controller
 			$var_produk = $this->mPerhitungan->variabel_produk($value->id_order);
 			foreach ($var_produk as $key => $item) {
 				// $produk = array();
-				$produk[] = [$item->nm_produk, $item->id_order];
+				$produk[] = [$item->nama_produk, $item->id_order];
 			}
 		}
 
@@ -86,16 +86,16 @@ class cPerhitungan extends CI_Controller
 		$dt_itemset2 = $this->db->query("SELECT produk1, produk2 FROM `dt_itemset2`")->result();
 		foreach ($dt_itemset2 as $key => $value) {
 			// echo $value->produk1 . ' - ' . $value->produk2 . '<br>';
-			$tran = $this->db->query("SELECT * FROM `dt_tabular` GROUP BY id_transaksi")->result();
+			$tran = $this->db->query("SELECT * FROM `dt_tabular` GROUP BY id_order")->result();
 			foreach ($tran as $key => $item) {
-				// echo $item->id_transaksi;
-				$dtt = $this->db->query("SELECT * FROM `dt_tabular` WHERE id_transaksi='" . $item->id_transaksi . "'")->result();
+				// echo $item->id_order;
+				$dtt = $this->db->query("SELECT * FROM `dt_tabular` WHERE id_order='" . $item->id_order . "'")->result();
 				foreach ($dtt as $key => $c) {
 					echo ' | ' . $c->produk;
 					if ($c->produk == $value->produk1 || $c->produk == $value->produk2) {
 						// echo '1';
 						$data = array(
-							'id_transaksi' => $item->id_transaksi,
+							'id_order' => $item->id_order,
 							'produk1' => $value->produk1,
 							'produk2' => $value->produk2
 						);
@@ -108,20 +108,20 @@ class cPerhitungan extends CI_Controller
 			}
 		}
 		//memanggil data item sementara itemset 2 
-		$dt_item = $this->db->query("SELECT id_transaksi, COUNT(id_transaksi) as jml, produk1, produk2 FROM `dt_item` GROUP BY id_transaksi, produk1, produk2  ORDER BY `dt_item`.`produk2` ASC")->result();
+		$dt_item = $this->db->query("SELECT id_order, COUNT(id_order) as jml, produk1, produk2 FROM `dt_item` GROUP BY id_order, produk1, produk2  ORDER BY `dt_item`.`produk2` ASC")->result();
 		foreach ($dt_item as $key => $value) {
 			if ($value->jml >= 2) {
-				// echo $value->id_transaksi . ' - ' . $value->jml . ' - ' . $value->produk1 . ' - ' . $value->produk2 . '<br>';
+				// echo $value->id_order . ' - ' . $value->jml . ' - ' . $value->produk1 . ' - ' . $value->produk2 . '<br>';
 				$item_prod1[] = $value->produk1;
 				$item_prod2[] = $value->produk2;
-				$id_transaksi[] = $value->id_transaksi;
+				$id_order[] = $value->id_order;
 			}
 		}
 
 		// $this->mPerhitungan->truncate_tbl_item();
 		for ($z = 0; $z < sizeof($item_prod1); $z++) {
 			$data = array(
-				'id_transaksi' => $id_transaksi[$z],
+				'id_order' => $id_order[$z],
 				'produk1' => $item_prod1[$z],
 				'produk2' => $item_prod2[$z]
 			);
@@ -129,7 +129,7 @@ class cPerhitungan extends CI_Controller
 		}
 
 		//menghitung nilai support itemset 2
-		$var_support2 = $this->db->query("SELECT COUNT(id_transaksi) as jml, produk1, produk2 FROM `dt_item` GROUP BY produk1, produk2")->result();
+		$var_support2 = $this->db->query("SELECT COUNT(id_order) as jml, produk1, produk2 FROM `dt_item` GROUP BY produk1, produk2")->result();
 		foreach ($var_support2 as $key => $value) {
 			// echo $value->jml . '-' . $value->produk1 . '-' . $value->produk2;
 			$support2 = $value->jml / 7;
@@ -148,13 +148,6 @@ class cPerhitungan extends CI_Controller
 			$this->db->where('produk1', $value->produk1);
 			$this->db->where('produk2', $value->produk2);
 			$this->db->update('dt_itemset2', $data);
-		}
-
-		//-------------------------------------------PROSES ITEMSET 3
-		//mengambil data itemset 2 yang lolos
-		$data_itemset2 = $this->db->query("SELECT * FROM `dt_itemset2` WHERE lolos='1' GROUP BY produk1")->result();
-		foreach ($data_itemset2 as $key => $value) {
-			echo $value->produk1;
 		}
 	}
 }

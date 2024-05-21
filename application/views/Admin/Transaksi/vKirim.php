@@ -48,7 +48,7 @@
 												<td><?= $value->nama ?></td>
 												<td><?= $value->tgl ?></td>
 												<td>Rp. <?= number_format($value->total_bayar)  ?></td>
-												<td><span class="badge bg-olive">Pesanan Dikirim</span></td>
+												<td><span class="badge bg-primary">Pesanan Dikirim</span></td>
 												<td><a class="btn btn-warning" href="<?= base_url('Admin/cBelumBayar/detail_transaksi/' . $value->id_order) ?>">Detail Transaksi</a></td>
 											</tr>
 										<?php

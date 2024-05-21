@@ -20,6 +20,15 @@ class cKirim extends CI_Controller
 		$this->load->view('Admin/Transaksi/vKirim', $data);
 		$this->load->view('Admin/Layouts/footer');
 	}
+	public function kirim($id)
+	{
+		$data = array(
+			'stat_order' => '3',
+		);
+		$this->mTransaksi->update_status($id, $data);
+		$this->session->set_flashdata('success', 'Pesanan Segera Sampai Kepada Pelanggan!');
+		redirect('Admin/cKirim');
+	}
 }
 
 /* End of file cKirim.php */

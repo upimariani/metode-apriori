@@ -46,37 +46,41 @@
 									<tbody>
 										<?php
 										foreach ($user as $key => $value) {
+											if ($value->level_user != '4') {
+
+
 										?>
-											<tr>
-												<td><?= $value->nama ?></td>
-												<td><?= $value->alamat ?></td>
-												<td><?= $value->no_hp ?></td>
-												<td><?= $value->username ?></td>
-												<td><?= $value->password ?></td>
-												<td><?php
-													if ($value->level_user == '1') {
-													?>
-														<span class="badge badge-success">Admin</span>
-													<?php
-													} else if ($value->level_user == '2') {
-													?>
-														<span class="badge badge-warning">Marketing</span>
-													<?php
-													} else if ($value->level_user == '3') {
-													?>
-														<span class="badge badge-info">Manager</span>
-													<?php
-													}
-													?>
-												</td>
-												<td>
+												<tr>
+													<td><?= $value->nama ?></td>
+													<td><?= $value->alamat ?></td>
+													<td><?= $value->no_hp ?></td>
+													<td><?= $value->username ?></td>
+													<td><?= $value->password ?></td>
+													<td><?php
+														if ($value->level_user == '1') {
+														?>
+															<span class="badge badge-success">Admin</span>
+														<?php
+														} else if ($value->level_user == '2') {
+														?>
+															<span class="badge badge-warning">Marketing</span>
+														<?php
+														} else if ($value->level_user == '3') {
+														?>
+															<span class="badge badge-info">Manager</span>
+														<?php
+														}
+														?>
+													</td>
+													<td>
 
-													<button data-toggle="modal" data-target="#edit<?= $value->id_user ?>" class="btn btn-warning"> Edit </button>
-													<a href="<?= base_url('Admin/cUser/delete/' . $value->id_user) ?>" class="btn btn-danger"> Hapus </a>
+														<button data-toggle="modal" data-target="#edit<?= $value->id_user ?>" class="btn btn-warning"> Edit </button>
+														<a href="<?= base_url('Admin/cUser/delete/' . $value->id_user) ?>" class="btn btn-danger"> Hapus </a>
 
-												</td>
-											</tr>
+													</td>
+												</tr>
 										<?php
+											}
 										}
 										?>
 

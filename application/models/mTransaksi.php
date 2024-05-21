@@ -18,6 +18,11 @@ class mTransaksi extends CI_Model
 		$data['transaksi'] = $this->db->query("SELECT * FROM `transaksi` JOIN user ON user.id_user=transaksi.id_user WHERE transaksi.id_order='" . $id . "';")->row();
 		return $data;
 	}
+	public function update_status($id, $data)
+	{
+		$this->db->where('id_order', $id);
+		$this->db->update('transaksi', $data);
+	}
 }
 
 /* End of file morder.php */

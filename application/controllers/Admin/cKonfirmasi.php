@@ -20,6 +20,16 @@ class cKonfirmasi extends CI_Controller
 		$this->load->view('Admin/Transaksi/vKonfirmasi', $data);
 		$this->load->view('Admin/Layouts/footer');
 	}
+	public function konfirmasi($id)
+	{
+		$data = array(
+			'stat_order' => '2',
+			'stat_pembayaran' => '1'
+		);
+		$this->mTransaksi->update_status($id, $data);
+		$this->session->set_flashdata('success', 'Pesanan Segera Diproses!');
+		redirect('Admin/cProses');
+	}
 }
 
 /* End of file cKonfirmasi.php */

@@ -105,11 +105,11 @@
 					<?php
 					if ($detail['transaksi']->stat_order == '1') {
 					?>
-						<a href="<?= base_url('Admin/cTransaksi/konfirmasi/' . $detail['transaksi']->id_order) ?>" class="btn btn-warning">Konfirmasi</a>
+						<a href="<?= base_url('Admin/cKonfirmasi/konfirmasi/' . $detail['transaksi']->id_order) ?>" class="btn btn-warning">Konfirmasi</a>
 					<?php
 					} else if ($detail['transaksi']->stat_order == '2') {
 					?>
-						<a href="<?= base_url('Admin/cTransaksi/kirim/' . $detail['transaksi']->id_order) ?>" class="btn btn-info">Pesanan Dikirim</a>
+						<a href="<?= base_url('Admin/cKirim/kirim/' . $detail['transaksi']->id_order) ?>" class="btn btn-info">Pesanan Dikirim</a>
 
 					<?php
 					}

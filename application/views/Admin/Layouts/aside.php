@@ -50,6 +50,10 @@
 					echo 'class=active';
 				}  ?>><a class="nav-link" href="<?= base_url('Admin/cPelanggan') ?>"><i class="fas fa-users"></i> <span>Pelanggan</span></a></li>
 
+			<li class="menu-header">Analisis</li>
+			<li <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cAnalisis') {
+					echo 'class=active';
+				}  ?>><a class="nav-link" href="<?= base_url('Admin/cAnalisis') ?>"><i class="fas fa-tag"></i> <span>Analisis Produk</span></a></li>
 		</ul>
 
 

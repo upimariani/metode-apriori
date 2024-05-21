@@ -5,15 +5,15 @@ class mPerhitungan extends CI_Model
 {
 	public function variabel_transaksi()
 	{
-		return $this->db->query("SELECT * FROM `order` LIMIT 7")->result();
+		return $this->db->query("SELECT * FROM `transaksi` LIMIT 7")->result();
 	}
 	public function variabel_produk($id_order)
 	{
-		return $this->db->query("SELECT * FROM `order` JOIN order_produk ON order.id_order = order_produk.id_order JOIN produk ON produk.id_produk=order_produk.id_produk WHERE order.id_order='" . $id_order . "'")->result();
+		return $this->db->query("SELECT * FROM `transaksi` JOIN order_produk ON transaksi.id_order = order_produk.id_order JOIN produk ON produk.id_produk=order_produk.id_produk WHERE transaksi.id_order='" . $id_order . "'")->result();
 	}
 	public function dt_produk()
 	{
-		return $this->db->query("SELECT nm_produk FROM `order` JOIN order_produk ON order.id_order=order_produk.id_order JOIN produk ON produk.id_produk=order_produk.id_produk WHERE order.id_order <= '7' GROUP BY nm_produk")->result();
+		return $this->db->query("SELECT nama_produk FROM `transaksi` JOIN order_produk ON transaksi.id_order=order_produk.id_order JOIN produk ON produk.id_produk=order_produk.id_produk WHERE transaksi.id_order <= '7' GROUP BY nama_produk")->result();
 	}
 	public function truncate_tbl_item()
 	{
@@ -24,8 +24,13 @@ class mPerhitungan extends CI_Model
 		$this->db->truncate('dt_item');
 		$this->db->truncate('dt_itemset1');
 		$this->db->truncate('dt_itemset2');
-		$this->db->truncate('dt_itemset3');
 		$this->db->truncate('dt_tabular');
+	}
+
+	//admin
+	public function select()
+	{
+		return $this->db->query("SELECT * FROM `dt_itemset2`")->result();
 	}
 }
 
