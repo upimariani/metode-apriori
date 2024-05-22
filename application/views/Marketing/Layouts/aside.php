@@ -29,23 +29,27 @@
 			<li class="dropdown">
 				<a href="#" class="nav-link has-dropdown"><i class="fas fa-store"></i> <span>Transaksi</span></a>
 				<ul class="dropdown-menu">
-					<li <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cBelumBayar') {
+					<li <?php if ($this->uri->segment(1) == 'Marketing' && $this->uri->segment(2) == 'cBelumBayar') {
 							echo 'class=active';
-						}  ?>><a class="nav-link" href="<?= base_url('Admin/cBelumBayar') ?>">Belum Bayar</a></li>
-					<li <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cKonfirmasi') {
+						}  ?>><a class="nav-link" href="<?= base_url('Marketing/cBelumBayar') ?>">Belum Bayar</a></li>
+					<li <?php if ($this->uri->segment(1) == 'Marketing' && $this->uri->segment(2) == 'cKonfirmasi') {
 							echo 'class=active';
-						}  ?>><a class="nav-link" href="<?= base_url('Admin/cKonfirmasi') ?>">Menunggu Konfirmasi</a></li>
-					<li <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cProses') {
+						}  ?>><a class="nav-link" href="<?= base_url('Marketing/cKonfirmasi') ?>">Menunggu Konfirmasi</a></li>
+					<li <?php if ($this->uri->segment(1) == 'Marketing' && $this->uri->segment(2) == 'cProses') {
 							echo 'class=active';
-						}  ?>><a class="nav-link" href="<?= base_url('Admin/cProses') ?>">Pesanan Diproses</a></li>
-					<li <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cKirim') {
+						}  ?>><a class="nav-link" href="<?= base_url('Marketing/cProses') ?>">Pesanan Diproses</a></li>
+					<li <?php if ($this->uri->segment(1) == 'Marketing' && $this->uri->segment(2) == 'cKirim') {
 							echo 'class=active';
-						}  ?>><a class="nav-link" href="<?= base_url('Admin/cKirim') ?>">Pesanan Dikirim</a></li>
-					<li <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cSelesai') {
+						}  ?>><a class="nav-link" href="<?= base_url('Marketing/cKirim') ?>">Pesanan Dikirim</a></li>
+					<li <?php if ($this->uri->segment(1) == 'Marketing' && $this->uri->segment(2) == 'cSelesai') {
 							echo 'class=active';
-						}  ?>><a class="nav-link" href="<?= base_url('Admin/cSelesai') ?>">Pesanan Selesai</a></li>
+						}  ?>><a class="nav-link" href="<?= base_url('Marketing/cSelesai') ?>">Pesanan Selesai</a></li>
 				</ul>
 			</li>
+			<li <?php if ($this->uri->segment(1) == 'Marketing' && $this->uri->segment(2) == 'cTransaksiLangsung') {
+					echo 'class=active';
+				}  ?>><a class="nav-link" href="<?= base_url('Marketing/cTransaksiLangsung') ?>"><i class="fas fa-store-alt"></i> <span>Transaksi Langsung</span></a></li>
+
 
 
 		</ul>

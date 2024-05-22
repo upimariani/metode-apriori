@@ -58,7 +58,7 @@
 
 		</div>
 		<div class="row">
-			<div class="col-lg-7 col-md-12 col-12 col-sm-12">
+			<div class="col-lg-12 col-md-12 col-12 col-sm-12">
 				<div class="card">
 					<div class="card-header">
 						<h4>Grafik Penjualan Per Hari</h4>
@@ -72,34 +72,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-5 col-md-12 col-12 col-sm-12">
-				<div class="card">
-					<div class="card-header">
-						<h4>Chatting</h4>
-					</div>
-					<div class="card-body">
-						<ul class="list-unstyled list-unstyled-border">
-							<?php
-							foreach ($chatting as $key => $value) {
-							?>
-								<li class="media">
-									<img class="mr-3 rounded-circle" width="50" src="<?= base_url('asset/stisla-1-2.2.0/dist/') ?>assets/img/avatar/avatar-1.png" alt="avatar">
-									<div class="media-body">
-										<div class="float-right text-primary"><?= $value->time ?></div>
-										<div class="media-title"><?= $value->nama ?></div>
-										<a href="<?= base_url('Marketing/cDashboard/view_chatting/' . $value->id_user) ?>"><span class="text-small text-muted">View</span></a>
-									</div>
-								</li>
-							<?php
-							}
-							?>
 
-
-						</ul>
-
-					</div>
-				</div>
-			</div>
 		</div>
 
 	</section>

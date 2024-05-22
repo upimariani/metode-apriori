@@ -4,6 +4,11 @@
 		<div class="section-header">
 			<h1>Dashboard</h1>
 		</div>
+		<?php
+		$user = $this->db->query("SELECT COUNT(id_user) as jml FROM `user` WHERE level_user != '4'")->row();
+		$pelanggan = $this->db->query("SELECT COUNT(id_user) as jml FROM `user` WHERE level_user = '4'")->row();
+		$produk = $this->db->query("SELECT COUNT(id_produk) as jml FROM `produk`")->row();
+		?>
 		<div class="row">
 			<div class="col-lg-4 col-md-6 col-sm-6 col-12">
 				<div class="card card-statistic-1">
@@ -15,7 +20,7 @@
 							<h4>Total User</h4>
 						</div>
 						<div class="card-body">
-							10
+							<?= $user->jml ?>
 						</div>
 					</div>
 				</div>
@@ -30,7 +35,7 @@
 							<h4>Total Pelanggan</h4>
 						</div>
 						<div class="card-body">
-							42
+							<?= $pelanggan->jml ?>
 						</div>
 					</div>
 				</div>
@@ -45,7 +50,7 @@
 							<h4>Total Produk</h4>
 						</div>
 						<div class="card-body">
-							1,201
+							<?= $produk->jml ?>
 						</div>
 					</div>
 				</div>
