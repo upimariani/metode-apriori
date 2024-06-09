@@ -5,7 +5,7 @@ class mPerhitungan extends CI_Model
 {
 	public function variabel_transaksi()
 	{
-		return $this->db->query("SELECT * FROM `transaksi` LIMIT 7")->result();
+		return $this->db->query("SELECT * FROM `transaksi` JOIN user ON user.id_user=transaksi.id_user WHERE level_user='4'")->result();
 	}
 	public function variabel_produk($id_order)
 	{
@@ -27,10 +27,15 @@ class mPerhitungan extends CI_Model
 		$this->db->truncate('dt_tabular');
 	}
 
+	//reseller
+	public function variabel_transaksi_reseller()
+	{
+		return $this->db->query("SELECT * FROM `transaksi` JOIN user ON user.id_user=transaksi.id_user WHERE level_user='5'")->result();
+	}
 	//admin
 	public function select()
 	{
-		return $this->db->query("SELECT * FROM `dt_itemset2`")->result();
+		return $this->db->query("SELECT * FROM `analisis`")->result();
 	}
 }
 

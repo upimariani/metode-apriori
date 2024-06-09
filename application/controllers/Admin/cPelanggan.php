@@ -19,6 +19,17 @@ class cPelanggan extends CI_Controller
 		$this->load->view('Admin/vPelanggan', $data);
 		$this->load->view('Admin/Layouts/footer');
 	}
+	public function history($id_user)
+	{
+		$data = array(
+			'history' => $this->mUser->history_transaksi($id_user)
+		);
+		$this->load->view('Admin/Layouts/head');
+		$this->load->view('Admin/Layouts/nav');
+		$this->load->view('Admin/Layouts/aside');
+		$this->load->view('Admin/vHistoryPelanggan', $data);
+		$this->load->view('Admin/Layouts/footer');
+	}
 }
 
 /* End of file cPelanggan.php */

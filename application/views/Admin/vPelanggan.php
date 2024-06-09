@@ -38,14 +38,14 @@
 											<th>No Telepon</th>
 											<th>Username</th>
 											<th>Password</th>
+											<th>Jenis</th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
 										<?php
 										foreach ($user as $key => $value) {
-											if ($value->level_user == '4') {
-
-
+											if ($value->level_user == '4' || $value->level_user == '5') {
 										?>
 												<tr>
 													<td><?= $value->nama ?></td>
@@ -53,6 +53,17 @@
 													<td><?= $value->no_hp ?></td>
 													<td><?= $value->username ?></td>
 													<td><?= $value->password ?></td>
+													<td><?php if ($value->level_user == '4') {
+														?>
+															<span class="badge badge-success">Pelanggan</span>
+														<?php
+														} else {
+														?>
+															<span class="badge badge-warning">Reseller</span>
+														<?php
+														} ?>
+													</td>
+													<td><a href="<?= base_url('Admin/cPelanggan/history/' . $value->id_user) ?>" class="btn btn-danger">History</a></td>
 
 
 												</tr>

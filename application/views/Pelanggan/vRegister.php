@@ -54,6 +54,14 @@
 										</div>
 									</div>
 								</div>
+								<div class="form-group mt-3">
+									<label for="username">Jenis Pelanggan *</label>
+									<select class="form-control" name="jenis">
+										<option value="4">Pelanggan</option>
+										<option value="5">Reseller</option>
+									</select>
+									<?= form_error('jenis', '<small class="text-danger">', '</small>') ?>
+								</div>
 							</div>
 							<p class="text-primary">Anda sudah memiliki akun? <a href="<?= base_url('Pelanggan/cLogin') ?>">Login!!</a></p>
 							<button type="submit" class="btn btn-primary-hover-outline">Registrasi</button>

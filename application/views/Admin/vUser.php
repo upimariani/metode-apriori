@@ -46,7 +46,7 @@
 									<tbody>
 										<?php
 										foreach ($user as $key => $value) {
-											if ($value->level_user != '4') {
+											if ($value->level_user != '4' && $value->level_user != '5') {
 
 
 										?>

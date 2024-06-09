@@ -23,7 +23,8 @@ class cLAnalisis extends CI_Controller
 	}
 	public function cetak()
 	{
-		$produk = $this->db->query("SELECT * FROM `dt_itemset2`")->result();
+		$jenis = $this->input->post('jenis');
+		$produk = $this->db->query("SELECT * FROM `analisis` WHERE type='" . $jenis . "'")->result();
 		// memanggil library FPDF
 		require('asset/fpdf/fpdf.php');
 
@@ -49,10 +50,13 @@ class cLAnalisis extends CI_Controller
 		$pdf->Cell(5, 5, '', 0, 1);
 		$pdf->SetFont('Times', 'B', 9);
 		$pdf->Cell(10, 7, 'No', 1, 0, 'C');
-		$pdf->Cell(55, 7, 'Produk Pertama', 1, 0, 'C');
-		$pdf->Cell(55, 7, 'Produk Kedua', 1, 0, 'C');
-		$pdf->Cell(30, 7, 'Jumlah', 1, 0, 'C');
-		$pdf->Cell(30, 7, 'Hasil Support', 1, 0, 'C');
+		$pdf->Cell(30, 7, 'Produk Pertama', 1, 0, 'C');
+		$pdf->Cell(30, 7, 'Produk Kedua', 1, 0, 'C');
+		$pdf->Cell(30, 7, 'Min Support', 1, 0, 'C');
+		$pdf->Cell(30, 7, 'Min Confidence %', 1, 0, 'C');
+		$pdf->Cell(15, 7, 'Jumlah', 1, 0, 'C');
+		$pdf->Cell(20, 7, 'Confidence', 1, 0, 'C');
+		$pdf->Cell(20, 7, 'Hasil Support', 1, 0, 'C');
 
 
 		$pdf->Cell(10, 7, '', 0, 1);
@@ -62,10 +66,13 @@ class cLAnalisis extends CI_Controller
 		foreach ($produk as $key => $value) {
 
 			$pdf->Cell(10, 6, $no++, 1, 0, 'C');
-			$pdf->Cell(55, 6, $value->produk1, 1, 0);
-			$pdf->Cell(55, 6, $value->produk2, 1, 0);
-			$pdf->Cell(30, 6, $value->jumlah, 1, 0);
-			$pdf->Cell(30, 6, round($value->support, 2), 1, 1);
+			$pdf->Cell(30, 6, $value->produk1, 1, 0);
+			$pdf->Cell(30, 6, $value->produk2, 1, 0);
+			$pdf->Cell(30, 6, $value->min_support, 1, 0);
+			$pdf->Cell(30, 6, $value->min_confidence, 1, 0);
+			$pdf->Cell(15, 6, $value->jumlah, 1, 0);
+			$pdf->Cell(20, 6, round($value->confidence) . '%', 1, 0);
+			$pdf->Cell(20, 6, round($value->support, 2), 1, 1);
 		}
 		$pdf->Output();
 	}

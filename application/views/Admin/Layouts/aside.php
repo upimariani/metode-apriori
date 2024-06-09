@@ -1,4 +1,4 @@
-<div class="main-sidebar sidebar-style-2">
+<div class="main-sidebar sidebar-style-1">
 	<aside id="sidebar-wrapper">
 		<div class="sidebar-brand">
 			<a href="index.html">Z&J BAKERY</a>

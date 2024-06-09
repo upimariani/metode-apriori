@@ -23,6 +23,12 @@ class mUser extends CI_Model
 		$this->db->where('id_user', $id);
 		$this->db->delete('user');
 	}
+
+	//history transaksi
+	public function history_transaksi($id_user)
+	{
+		return $this->db->query("SELECT * FROM `transaksi` JOIN user ON user.id_user=transaksi.id_user WHERE user.id_user='" . $id_user . "'")->result();
+	}
 }
 
 /* End of file mUser.php */

@@ -24,6 +24,11 @@
 			<li <?php if ($this->uri->segment(1) == 'Manager' && $this->uri->segment(2) == 'cLAnalisis') {
 					echo 'class=active';
 				}  ?>><a class="nav-link" href="<?= base_url('Manager/cLAnalisis') ?>"><i class="fas fa-percentage"></i> <span>Laporan Analisis Produk</span></a></li>
+
+			<li class="menu-header">Analisis</li>
+			<li <?php if ($this->uri->segment(1) == 'Manager' && $this->uri->segment(2) == 'cAnalisis') {
+					echo 'class=active';
+				}  ?>><a class="nav-link" href="<?= base_url('Manager/cAnalisis') ?>"><i class="fas fa-tag"></i> <span>Analisis Produk</span></a></li>
 		</ul>
 	</aside>
 </div>

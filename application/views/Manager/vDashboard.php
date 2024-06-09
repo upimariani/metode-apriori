@@ -58,7 +58,21 @@
 
 		</div>
 		<div class="row">
-			<div class="col-lg-12 col-md-12 col-12 col-sm-12">
+			<div class="col-lg-6 col-md-12 col-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h4>Grafik Penjualan Produk</h4>
+						<div class="card-header-action">
+
+						</div>
+					</div>
+					<div class="card-body">
+						<canvas id="produk" height="182"></canvas>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-12 col-12 col-sm-12">
 				<div class="card">
 					<div class="card-header">
 						<h4>Grafik Penjualan Per Hari</h4>

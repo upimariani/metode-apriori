@@ -12,7 +12,26 @@
 
 		<div class="section-body">
 			<h2 class="section-title">Analisis Produk Z&J Bakery</h2>
-			<a class="btn btn-success" href="<?= base_url('Manager/cLAnalisis/cetak') ?>">Cetak</a>
+			<div class="card">
+				<div class="card-header">
+					<h4>Cetak Laporan Analisis Produk</h4>
+				</div>
+				<div class="card-body">
+					<form action="<?= base_url('Manager/cLAnalisis/cetak') ?>" method="POST">
+						<div class="form-group">
+							<select class="form-control" name="jenis">
+								<option value="">---Pilih Jenis Pembeli---</option>
+								<option value="1">Pelanggan</option>
+								<option value="2">Reseller</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-success">Cetak</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
 			<?php
 			if ($this->session->userdata('success')) {
 			?>
@@ -38,6 +57,7 @@
 											<th>Produk Kedua</th>
 											<th>Jumlah</th>
 											<th>Support</th>
+											<th>Jenis Pelanggan</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -51,6 +71,18 @@
 													<td>Then buy <strong><?= $value->produk2 ?></strong></td>
 													<td><?= $value->jumlah ?></td>
 													<td><?= round($value->support, 2) ?></td>
+													<td><?php
+														if ($value->type == '1') {
+														?>
+															<span class="badge badge-success">Pelanggan</span>
+														<?php
+														} else if ($value->type == '2') {
+														?>
+															<span class="badge badge-warning">Reseller</span>
+														<?php
+														}
+														?>
+													</td>
 
 												</tr>
 										<?php
